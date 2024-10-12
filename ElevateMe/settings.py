@@ -84,14 +84,13 @@ WSGI_APPLICATION = 'ElevateMe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'),
+        'NAME': os.getenv('DATABASE'),  # Default if not set
+        'USER': os.getenv('DB_USERNAME'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),  # Add a fallback or handle securely
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('PORT'),
         'OPTIONS': {
             'init_command': 'SET SQL_MODE=STRICT_TRANS_TABLES',
-            'driver': 'mysql.connector.django'
         },
     }
 }
