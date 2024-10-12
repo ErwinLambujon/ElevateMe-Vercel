@@ -1,19 +1,18 @@
-[
-phases.setup
+[phases.setup]
+nixPkgs = [
+    "python39",
+    "gcc",
+    "libmysqlclient",
+    "pkg-config"
 ]
-nixPkgs = ["libmysqlclient", "pkg-config"]
 
-[
-phases.install
-]
+[phases.install]
 cmds = [
-  "python -m venv /opt/venv",
-  ". /opt/venv/bin/activate",
-  "pip install --upgrade pip",
-  "pip install -r requirements.txt"
+    "python -m venv /opt/venv",
+    ". /opt/venv/bin/activate",
+    "pip install --upgrade pip",
+    "pip install -r requirements.txt"
 ]
 
-[
-start
-]
-cmd = "python app.py"
+[start]
+cmd = "gunicorn your_project.wsgi:application"
