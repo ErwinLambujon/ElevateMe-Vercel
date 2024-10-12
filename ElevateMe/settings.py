@@ -89,8 +89,10 @@ DATABASES = {
         'PASSWORD': 'Anwg5RZ@Q5dBUbD',
         'HOST': 'sql.freedb.tech',
         'PORT': '3306',
-        'OPTIONS': {'init_command': 'SET SQL_MODE=STRICT_TRANS_TABLES'},
-
+        'OPTIONS': {
+            'init_command': 'SET SQL_MODE=STRICT_TRANS_TABLES',
+            'driver': 'mysql.connector.django'
+        },
     }
 }
 
@@ -143,7 +145,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
