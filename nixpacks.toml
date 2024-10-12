@@ -2,8 +2,10 @@
 nixPkgs = [
     "python39",
     "gcc",
+    "pkg-config",
     "libmysqlclient",
-    "pkg-config"
+    "mysql80",
+    "openssl"
 ]
 
 [phases.install]
@@ -11,6 +13,8 @@ cmds = [
     "python -m venv /opt/venv",
     ". /opt/venv/bin/activate",
     "pip install --upgrade pip",
+    "pip install wheel",
+    "pip install mysqlclient",
     "pip install -r requirements.txt"
 ]
 
