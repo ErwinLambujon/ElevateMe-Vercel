@@ -1,4 +1,19 @@
-# nixpacks.toml
-[phases.setup]
-apt_pkgs = ["mysql-client", "libmysqlclient-dev"]
+[
+phases.setup
+]
+nixPkgs = ["libmysqlclient", "pkg-config"]
 
+[
+phases.install
+]
+cmds = [
+  "python -m venv /opt/venv",
+  ". /opt/venv/bin/activate",
+  "pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
+
+[
+start
+]
+cmd = "python app.py"
