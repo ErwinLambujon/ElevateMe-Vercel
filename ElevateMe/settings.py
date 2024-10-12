@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'ElevateMe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'freedb_elevatemedb',
-        'USER': 'freedb_softeng2',
-        'PASSWORD': 'Anwg5RZ@Q5dBUbD',
-        'HOST': 'sql.freedb.tech',
-        'PORT': '3306',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
         'OPTIONS': {
             'init_command': 'SET SQL_MODE=STRICT_TRANS_TABLES',
             'driver': 'mysql.connector.django'
