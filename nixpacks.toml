@@ -1,5 +1,5 @@
 [phases.setup]
-aptPkgs = ["default-libmysqlclient-dev", "pkg-config"]
+aptPkgs = ["default-libmysqlclient-dev", "pkg-config", "glibc-source", "libc6"]
 
 [variables]
 LIBRARY_PATH = "/usr/lib/x86_64-linux-gnu"
