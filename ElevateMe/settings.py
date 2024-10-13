@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=$t-vsu6^kf_d!3)vc)qwpqv7=ex_$jaj6xw$%o6309w#gjuc='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
+load_dotenv()
 
 # Application definition
 
@@ -147,7 +148,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # Default primary key field type
