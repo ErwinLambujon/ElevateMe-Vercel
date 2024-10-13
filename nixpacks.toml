@@ -1,10 +1,14 @@
 version = "1.0"
 
 [build]
-packager = "pip"  # Specify pip as the packager
+packager = "pip"
 
 [dependencies]
 python = "3.9.0"
+mysqlclient = "*"
 
-# Include system libraries for MySQL under dependencies, not build
-apt = ["default-libmysqlclient-dev", "build-essential", "pkg-config", "python3-dev"]
+[build.dependencies]
+# Install MySQL/MariaDB development libraries
+apt = ["default-libmysqlclient-dev", "build-essential", "libssl-dev", "libffi-dev", "libmariadb-dev"]
+
+# You may need additional packages depending on your environment.
