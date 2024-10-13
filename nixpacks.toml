@@ -1,22 +1,13 @@
-[phases.setup]
-nixPkgs = [
-    "python39",
-    "gcc",
-    "pkg-config",
-    "libmysqlclient",
-    "mysql80",
-    "openssl"
-]
+# nixpack.toml
+version = "1.0"
 
-[phases.install]
-cmds = [
-    "python -m venv /opt/venv",
-    ". /opt/venv/bin/activate",
-    "pip install --upgrade pip",
-    "pip install wheel",
-    "pip install mysqlclient",
-    "pip install -r requirements.txt"
-]
+[build]
+packager = "pip"  # Specify pip as the packager
 
-[start]
-cmd = "gunicorn your_project.wsgi:application"
+[dependencies]
+python = "3.9.0"
+mysqlclient = "*"
+
+[build.dependencies]
+# Include system libraries for MySQL
+apt = ["default-libmysqlclient-dev", "build-essential"]
