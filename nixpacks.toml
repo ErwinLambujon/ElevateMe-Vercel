@@ -1,4 +1,13 @@
 [phases.setup]
+[phases.setup]
+commands = [
+  "sudo apt-get update",
+  "sudo apt-get install -y default-libmysqlclient-dev pkg-config",
+  "wget http://ftp.gnu.org/gnu/libc/glibc-2.36.tar.gz",
+  "tar -xvzf glibc-2.36.tar.gz",
+  "cd glibc-2.36 && mkdir build && cd build && ../configure --prefix=/usr && make && sudo make install"
+]
+
 aptPkgs = ["default-libmysqlclient-dev", "pkg-config", "glibc-source", "libc6"]
 
 [variables]
