@@ -1,14 +1,8 @@
-version = "1.0"
+[phases.setup]
+aptPkgs = ["default-libmysqlclient-dev", "pkg-config"]
 
-[build]
-packager = "pip"
-
-[dependencies]
-python = "3.9.0"
-mysqlclient = "*"
-
-[build.dependencies]
-# Install MySQL/MariaDB development libraries
-apt = ["default-libmysqlclient-dev", "build-essential", "libssl-dev", "libffi-dev", "libmariadb-dev"]
-
-# You may need additional packages depending on your environment.
+[variables]
+LIBRARY_PATH = "/usr/lib/x86_64-linux-gnu"
+LD_LIBRARY_PATH = "/usr/lib/x86_64-linux-gnu"
+MYSQLCLIENT_CFLAGS = "-I/usr/include/mysql"
+MYSQLCLIENT_LDFLAGS = "-L/usr/lib/x86_64-linux-gnu -lmysqlclient"
