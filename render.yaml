@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ElevateMe-Render
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ElevateMe.wsgi:application --timeout 120
